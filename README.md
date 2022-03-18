@@ -94,15 +94,30 @@ python histruct/src/preprocess.py -mode merge_data_splits -dataset arxiv -raw_pa
 #obtain_tok_se: wehther to obatin token-level struture vectors (see Appendix A.5 in the paper), default: false 
 python histruct/src/preprocess.py -mode format_to_histruct -dataset arxiv -base_LM roberta-base -raw_path data_arxiv/data_arxiv_splitted -save_path data_arxiv/data_arxiv_roberta  -log_file data_arxiv/arxiv_prepro_fth_roberta.log -summ_size 0 -n_cpus 1 -obtain_tok_se false
 
-
-
-
-
 ```
+## Root directory
+- ./data_cnndm: the preprocessed cnndm data saved in this folder
+- ./data_pubmed: the preprocessed pubmed data saved in this folder
+- ./data_arxiv: the preprocessed arxiv data saved in this folder
+- ./histruct: this repository dowloaded in this folder
+- ./models: the trained models saved in this folder
+
 
 ## Training and evaluation
 
-See `run_exp_cnndm.py`, `run_exp_pubmed.py` and `run_exp_arXiv.py`. 
+See `run_exp_cnndm.py`, `run_exp_pubmed.py` and `run_exp_arxiv.py`. Arguments can be changed in the scripts.
+
+```bash
+#run experiments on CNN/DailyMail
+python histruct/run_exp_cnndm.py
+
+#run experiments on PubMed
+python histruct/run_exp_pubmed.py
+
+#run experiments on arXiv
+python histruct/run_exp_arxiv.py
+```
+
 
 ## Downloads
 - the [raw CNN/DailyMail](https://cs.nyu.edu/~kcho/DMQA/) dataset
