@@ -15,7 +15,37 @@ Figure 1: Architecture of the HiStruct+ model. The model consists of a base TLM 
 ## ROUGEs results on PubMed and arXiv
 ![image](https://user-images.githubusercontent.com/28861305/159074104-fdf15316-1c7d-4e7a-809b-935bd5d17965.png)
 ![image](https://user-images.githubusercontent.com/28861305/159074172-eb18dcc1-95e9-4b07-a3fa-43e9572bba46.png)
+
+| Model $\downarrow$ / Metric $\rightarrow$                   | \multicolumn{1}{c}{R1}      | \multicolumn{1}{c}{R2}     | \multicolumn{1}{c}{RL}      |
+|-------------------------------------------------------------|-----------------------------|----------------------------|-----------------------------|
+| PEGASUS \citeyearpar{zhang2019pegasus}                      | 44.70                       | 17.27                      | 25.80                       |
+| BigBird PEGASUS \citeyearpar{bigbird}                       | \underline{46.63}           | 19.02                      | \underline{41.77}           |
+| DANCER  PEGASUS \citeyearpar{dancer2020}                    | 45.01                       | 17.60                      | 40.56                       |
+| \citeyearpar{longformer}                                    | \underline{46.63}           | \underline{19.62}          | 41.48                       |
+| Sent-CLF \citeyearpar{pilault-etal-2020-extractive}         | 34.01                       | 8.71                       | 30.41                       |
+| Sent-PTR \citeyearpar{pilault-etal-2020-extractive}         | 42.32                       | 15.63                      | 38.06                       |
+| ExtSum-LG + \citeyearpar{xiao-carenini-2020-systematically} |                             |                            |                             |
+| ~ RLoss                                                     | \underline{44.01}           | \underline{17.79}          | \underline{39.09}           |
+| ~ MMR-Select+                                               | 43.87                       | 17.50                      | 38.97                       |
+| TLM-I+E(G,M) \citeyearpar{pilault-etal-2020-extractive}     | \underline{41.62}           | \underline{14.69}          | \underline{38.03}           |
+| ORACLE (15k tok.)                                           | 53.58                       | 26.19                      | 47.76                       |
+| ORACLE (28k tok.)                                           | 53.97                       | 26.42                      | 48.12                       |
+| LEAD-10                                                     | 37.37                       | 10.85                      | 33.17                       |
+| TransformerETS                                              |                             |                            |                             |
+| ~~ \textit{Longformer-base (15k tok.)}                      | 38.49                       | 11.59                      | 33.85                       |
+| ~~ \textit{Longformer-base (28k tok.)}                      | 38.47                       | 11.56                      | 33.82                       |
+| HiStruct+                                                   |                             |                            |                             |
+| ~~ \textit{Longformer-base (15k tok.)}                      |                             |                            |                             |
+| ~~~~~~ sHE+STE(classified)                                  | \textbf{44.94*}             | \textbf{17.42}             | \textbf{39.90*}             |
+| ~~~~~~ sHE+STE                                              | \textbf{45.02*}             | \textbf{17.48}             | \textbf{39.94*}             |
+| ~~~~~~ sHE                                                  | \textbf{43.04}              | \textbf{15.87}             | \textbf{38.13}              |
+| ~~ \textit{Longformer-base (28k tok.)}                      |                             |                            |                             |
+| ~~~~~~ sHE+STE(classified)                                  | \textbf{45.17*}             | \textbf{17.61}             | \textbf{40.10*}             |
+| ~~~~~~ sHE+STE                                              | \underline{\textbf{45.22*}} | \underline{\textbf{17.67}} | \underline{\textbf{40.16*}} |
+
+
 ```{=latex}
+
 \begin{table}[ht]
 \fontsize{9}{9}
 \selectfont
