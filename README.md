@@ -12,8 +12,12 @@ our method gains. The ablation study demonstrates that the hierarchical position
 
 Figure 1: Architecture of the HiStruct+ model. The model consists of a base TLM for sentence encoding and two stacked inter-sentence Transformer layers for hierarchical contextual learning with a sigmoid classifier for extractive summarization. The two blocks shaded in light-green are the HiStruct injection components
 
+## ROUGEs results on PubMed and arXiv
+![image](https://user-images.githubusercontent.com/28861305/159074104-fdf15316-1c7d-4e7a-809b-935bd5d17965.png)
+![image](https://user-images.githubusercontent.com/28861305/159074172-eb18dcc1-95e9-4b07-a3fa-43e9572bba46.png)
 
-## Installation
+
+## Env. Setup
 
 Requirements: Python 3.8 and Conda
 
@@ -34,6 +38,11 @@ conda install -c bioconda perl-xml-parser
 conda install -c bioconda perl-lwp-protocol-https
 conda install -c bioconda perl-db-file
 ```
+## Preprocessing of data, HiStruct information obtained
+
+Data preprocessing would take some time. It is recommended to use the preprocessed data (see links in Downloads).
+
+
 
 ## Training and evaluation
 
