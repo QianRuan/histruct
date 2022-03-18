@@ -14,7 +14,7 @@ Figure 1: Architecture of the HiStruct+ model. The model consists of a base TLM 
 
 ## ROUGEs results on PubMed and arXiv
 <figure class="half">
-  <img src='https://user-images.githubusercontent.com/28861305/159074104-fdf15316-1c7d-4e7a-809b-935bd5d17965.png' width="400"/><img src='https://user-images.githubusercontent.com/28861305/159074172-eb18dcc1-95e9-4b07-a3fa-43e9572bba46.png' width="400"/>
+  <img src="https://user-images.githubusercontent.com/28861305/159074104-fdf15316-1c7d-4e7a-809b-935bd5d17965.png" width="400"/><img src="https://user-images.githubusercontent.com/28861305/159074172-eb18dcc1-95e9-4b07-a3fa-43e9572bba46.png" width="400"/>
 </figure> 
 
 
