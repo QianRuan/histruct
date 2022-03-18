@@ -12,7 +12,7 @@ our method gains. The ablation study demonstrates that the hierarchical position
 
 Figure 1: Architecture of the HiStruct+ model. The model consists of a base TLM for sentence encoding and two stacked inter-sentence Transformer layers for hierarchical contextual learning with a sigmoid classifier for extractive summarization. The two blocks shaded in light-green are the HiStruct injection components
 
-## ROUGEs results on PubMed and arXiv
+## ROUGE results on PubMed and arXiv
 
 ![image](https://user-images.githubusercontent.com/28861305/159074104-fdf15316-1c7d-4e7a-809b-935bd5d17965.png)![image](https://user-images.githubusercontent.com/28861305/159074172-eb18dcc1-95e9-4b07-a3fa-43e9572bba46.png)
 
@@ -40,9 +40,12 @@ conda install -c bioconda perl-xml-parser
 conda install -c bioconda perl-lwp-protocol-https
 conda install -c bioconda perl-db-file
 ```
-## Preprocessing of data, obtain HiStruct information 
+## Preprocessing of data
+- obtain HiStruct information 
+- obatin gold labels for extractive summarization
+- tokenize texts with the corresponding tokenizer
 
-Data preprocessing would take some time. It is recommended to use the preprocessed data if you experiment with CNN/DailyMail, PubMed or arXiv. (see links in Downloads).
+NOTE: Data preprocessing would take some time. It is recommended to use the preprocessed data if you experiment with CNN/DailyMail, PubMed or arXiv. (see links in Downloads).
 
 ```bash
 #CNN/DailyMail####################################################################################################
@@ -50,19 +53,19 @@ Data preprocessing would take some time. It is recommended to use the preprocess
 #export CLASSPATH=stanford-corenlp-4.2.0/stanford-corenlp-4.2.0.jar
 #raw data saved in data_cnndm/data_cnndm_raw
 
-#tokenize the sentences and paragraphs respectively, output files: data_cnndm/data_cnndm_raw_tokenized_sent, data_cnndm/data_cnndm_raw_tokenized_para
+# (1). tokenize the sentences and paragraphs respectively 
+# output files: data_cnndm/data_cnndm_raw_tokenized_sent, data_cnndm/data_cnndm_raw_tokenized_para
 python histruct/src/preprocess.py -mode tokenize -dataset cnndm  -raw_path data_cnndm/data_cnndm_raw -tok_sent_path data_cnndm/data_cnndm_raw_tokenized_sent -tok_para_path data_cnndm/data_cnndm_raw_tokenized_para -log_file data_cnndm/cnndm_prepro_tokenize.log
 
-#extract HiStruct info, output path: data_cnndm/data_cnndm_raw_tokenized_histruct
+# (2). extract HiStruct info
+# output path: data_cnndm/data_cnndm_raw_tokenized_histruct
 python histruct/src/preprocess.py  -dataset cnndm -mode extract_histruct_items -histruct_path data_cnndm/data_cnndm_raw_tokenized_histruct  -tok_sent_path data_cnndm/data_cnndm_raw_tokenized_sent -tok_para_path data_cnndm/data_cnndm_raw_tokenized_para -lower true -log_file data_cnndm/cnndm_prepro_extract_histruct_items.log
 
-#merge data splits for training, validation and testing
+# (3). merge data splits for training, validation and testing
 #make sure that the mapping files are in the folder 'urls'
-#input: raw_path
-#output: save_path
 python histruct/src/preprocess.py -dataset cnndm -mode merge_data_splits -raw_path data_cnndm/data_cnndm_raw_tokenized_histruct -save_path data_cnndm/data_cnndm_splitted/cnndm -map_path urls -log_file data_cnndm/cnndm_prepro_merge_data_splits.log
 
-#convcert format for HiStruct+ training, perpare gold labels using ORACLE
+# (4). convcert format for HiStruct+ training, perpare gold labels using ORACLE
 #base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model, choose from [roberta-base, bert-base]
 #summ_size: how many sentences should be included in ORACLE summaries, default:0, no specific limitation
 #obtain_tok_se: wehther to obatin token-level struture vectors (see Appendix A.5 in the paper), default: false 
@@ -71,10 +74,10 @@ python histruct/src/preprocess.py -mode format_to_histruct -dataset cnndm -base_
 
 #PubMed####################################################################################################
 #raw data saved in data_pubmed/data_pubmed_raw 
-#merge data splits for training, validation and testing
+# (1). merge data splits for training, validation and testing
 python histruct/src/preprocess.py -mode merge_data_splits -dataset pubmed -raw_path data_pubmed/data_pubmed_raw -save_path data_pubmed/data_pubmed_splitted/pubmed  -log_file data_pubmed/pubmed_prepro_merge_data_splits.log
 
-#convcert format for HiStruct+ training, perpare gold labels using ORACLE
+# (2). convcert format for HiStruct+ training, perpare gold labels using ORACLE
 #base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model, Longformer tokenizer is identical to roberta-base tokenizer
 #summ_size: how many sentences should be included in ORACLE summaries, default:0, no specific limitation
 #obtain_tok_se: wehther to obatin token-level struture vectors (see Appendix A.5 in the paper), default: false 
@@ -82,10 +85,10 @@ python histruct/src/preprocess.py -mode format_to_histruct -dataset pubmed -base
 
 #arXiv####################################################################################################
 #raw data saved in data_arxiv/data_arxiv_raw 
-#merge data splits for training, validation and testing
+# (1). merge data splits for training, validation and testing
 python histruct/src/preprocess.py -mode merge_data_splits -dataset arxiv -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_splitted/arxiv -log_file data_arxiv/arxiv_prepro_merge_data_splits.log
 
-#convcert format for HiStruct+ training, perpare gold labels using ORACLE
+# (2). convcert format for HiStruct+ training, perpare gold labels using ORACLE
 #base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model, Longformer tokenizer is identical to roberta-base tokenizer
 #summ_size: how many sentences should be included in ORACLE summaries, default:0, no specific limitation
 #obtain_tok_se: wehther to obatin token-level struture vectors (see Appendix A.5 in the paper), default: false 
@@ -99,7 +102,7 @@ python histruct/src/preprocess.py -mode format_to_histruct -dataset arxiv -base_
 
 ## Training and evaluation
 
-See `src/train.py`.
+See `run_exp_cnndm.py`, `run_exp_pubmed.py` and `run_exp_arXiv.py`. 
 
 ## Downloads
 - the [raw CNN/DailyMail](https://cs.nyu.edu/~kcho/DMQA/) dataset
