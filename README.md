@@ -162,3 +162,5 @@ python histruct/run_exp_arxiv.py
 - our best-performed [HiStruct+RoBERTa model on CNN/DailyMail](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
 - our best-performed [HiStruct+Longformer model on PubMed](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
 - our best-performed [HiStruct+Longformer model on arXiv](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
+
+## How to cite
