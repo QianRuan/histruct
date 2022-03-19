@@ -78,10 +78,26 @@ python histruct/src/preprocess.py -mode format_to_histruct -dataset cnndm -base_
 python histruct/src/preprocess.py -mode merge_data_splits -dataset pubmed -raw_path data_pubmed/data_pubmed_raw -save_path data_pubmed/data_pubmed_splitted/pubmed  -log_file data_pubmed/pubmed_prepro_merge_data_splits.log
 
 # (2). convcert format for HiStruct+ training, perpare gold labels using ORACLE
-#base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model, Longformer tokenizer is identical to roberta-base tokenizer
-#summ_size: how many sentences should be included in ORACLE summaries, default:0, no specific limitation
-#obtain_tok_se: wehther to obatin token-level struture vectors (see Appendix A.5 in the paper), default: false 
+#-base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model, Longformer tokenizer is identical to roberta-base tokenizer
+#-summ_size: how many sentences should be included in ORACLE summaries, default:0, no specific limitation
+#-obtain_tok_se: wehther to obatin token-level struture vectors (see Appendix A.5 in the paper), default: false 
 python histruct/src/preprocess.py -mode format_to_histruct -dataset pubmed -base_LM roberta-base -raw_path data_pubmed/data_pubmed_splitted -save_path data_pubmed/data_pubmed_roberta  -log_file data_pubmed/pubmed_prepro_fth_roberta.log -summ_size 0 -n_cpus 1 -obtain_tok_se false
+
+# (3). obtain unique section titles from the raw data
+python histruct/src/preprocess.py -mode obtain_section_names -dataset pubmed -raw_path data_pubmed/data_pubmed_raw  -save_path data_pubmed/data_pubmed_raw -log_file data_pubmed/pubmed_prepro_osn.log 
+
+# (4). generate section title embeddings (STEs)
+# -base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model
+# -sn_embed_comb_mode: how to convert the last hidden states at every token positions to a single vector, sum them up by default
+python histruct/src/preprocess.py -mode encode_section_names -base_LM longformer-base-4096 -dataset pubmed -sn_embed_comb_mode sum -raw_path data_pubmed/data_pubmed_raw -save_path data_pubmed/data_pubmed_raw -log_file data_pubmed/pubmed_prepro_esn.log 
+
+# (5). generate classified section title embeddings (classified STEs)
+# base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model
+# -sn_embed_comb_mode: how to convert the last hidden states at every token positions to a single vector, sum them up by default
+# -section_names_embed_path: the path to the original STE which is generated in the step (3)
+# -section_names_cls_file: the predefined dictionary of typical section title classes and the in-class section titles
+python histruct/src/preprocess.py -mode encode_section_names_cls -base_LM longformer-base-4096 -dataset pubmed -sn_embed_comb_mode sum -raw_path data_pubmed/data_pubmed_raw -save_path data_pubmed/data_pubmed_raw -log_file data_pubmed/pubmed_prepro_esnc.log  -section_names_embed_path data_pubmed/data_pubmed_raw/section_names_embed_longformerB_sum.pt -section_names_cls_file pubmed_SN_dic_8_Added.json
+
 
 #arXiv####################################################################################################
 #raw data saved in data_arxiv/data_arxiv_raw 
@@ -89,17 +105,32 @@ python histruct/src/preprocess.py -mode format_to_histruct -dataset pubmed -base
 python histruct/src/preprocess.py -mode merge_data_splits -dataset arxiv -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_splitted/arxiv -log_file data_arxiv/arxiv_prepro_merge_data_splits.log
 
 # (2). convcert format for HiStruct+ training, perpare gold labels using ORACLE
-#base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model, Longformer tokenizer is identical to roberta-base tokenizer
-#summ_size: how many sentences should be included in ORACLE summaries, default:0, no specific limitation
-#obtain_tok_se: wehther to obatin token-level struture vectors (see Appendix A.5 in the paper), default: false 
+#-base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model, Longformer tokenizer is identical to roberta-base tokenizer
+#-summ_size: how many sentences should be included in ORACLE summaries, default:0, no specific limitation
+#-obtain_tok_se: wehther to obatin token-level struture vectors (see Appendix A.5 in the paper), default: false 
 python histruct/src/preprocess.py -mode format_to_histruct -dataset arxiv -base_LM roberta-base -raw_path data_arxiv/data_arxiv_splitted -save_path data_arxiv/data_arxiv_roberta  -log_file data_arxiv/arxiv_prepro_fth_roberta.log -summ_size 0 -n_cpus 1 -obtain_tok_se false
+
+# (3). obtain unique section titles from the raw data
+python histruct/src/preprocess.py -mode obtain_section_names -dataset arxiv -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_raw -log_file data_arxiv/arxiv_prepro_osn.log 
+
+# (4). generate section title embeddings (STEs)
+# -base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model
+# -sn_embed_comb_mode: how to convert the last hidden states at every token positions to a single vector, sum them up by default
+python histruct/src/preprocess.py -mode encode_section_names -base_LM longformer-base-4096 -dataset arxiv -sn_embed_comb_mode sum -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_raw -log_file data_arxiv/arxiv_prepro_esn.log  
+
+# (5). generate classified section title embeddings (classified STEs)
+# -base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model
+# -sn_embed_comb_mode: how to convert the last hidden states at every token positions to a single vector, sum them up by default
+# -section_names_embed_path: the path to the original STE which is generated in the step (3)
+# -section_names_cls_file: the predefined dictionary of typical section title classes and the in-class section titles, saved in raw_path
+python histruct/src/preprocess.py -mode encode_section_names_cls -base_LM longformer-base-4096 -dataset arxiv -sn_embed_comb_mode sum -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_raw -log_file data_arxiv/arxiv_prepro_esnc.log  -section_names_embed_path data_arxiv/data_arxiv_raw/section_names_embed_longformerB_sum.pt -section_names_cls_file arxiv_SN_dic_10_Added.json
 
 ```
 ## Root directory
 - ./data_cnndm: the preprocessed cnndm data saved in this folder
-- ./data_pubmed: the preprocessed pubmed data saved in this folder
-- ./data_arxiv: the preprocessed arxiv data saved in this folder
-- ./histruct: this repository dowloaded in this folder
+- ./data_pubmed: the preprocessed pubmed data saved in this folder, the STE and classified STE in ./data_pubmed/data_pubmed_raw
+- ./data_arxiv: the preprocessed arxiv data saved in this folder, the STE and classified STE in ./data_arxiv/data_arxiv_raw
+- ./histruct: the github repository dowloaded in this folder
 - ./models: the trained models saved in this folder
 
 
@@ -122,9 +153,9 @@ python histruct/run_exp_arxiv.py
 ## Downloads
 - the [raw CNN/DailyMail](https://cs.nyu.edu/~kcho/DMQA/) dataset
 - the [raw PubMed & arXiv](https://github.com/armancohan/long-summarization) datasets
-- the preprocessed CNN/DailyMail data containing hierarchical structure information
-- the preprocessed PubMed data containing hierarchical structure information
-- the preprocessed arXiv data containing hierarchical structure information
+- the preprocessed CNN/DailyMail data containing hierarchical structure information (roberta tokenizer used)
+- the preprocessed PubMed data containing hierarchical structure information (roberta tokenizer used)
+- the preprocessed arXiv data containing hierarchical structure information (roberta tokenizer used)
 - the [pre-defined dictionaries](https://drive.google.com/file/d/1fSHK6r9QIPXNG58p0kzdFIWeRpFcdlqn/view?usp=sharing) of the typical section classes and the corresponding alternative section titles 
 - our best-performed HiStruct+RoBERTa model on CNN/DailyMail
 - our best-performed HiStruct+Longformer model on PubMed
