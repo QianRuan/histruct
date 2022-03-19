@@ -127,11 +127,12 @@ python histruct/src/preprocess.py -mode encode_section_names_cls -base_LM longfo
 ```
 
 ## Root directory
-- ./data_cnndm: the preprocessed cnndm data saved in this folder
-- ./data_pubmed: the preprocessed pubmed data saved in this folder, the STE and classified STE in ./data_pubmed/data_pubmed_raw
-- ./data_arxiv: the preprocessed arxiv data saved in this folder, the STE and classified STE in ./data_arxiv/data_arxiv_raw
-- ./histruct: the github repository dowloaded in this folder
-- ./models: the trained models saved in this folder
+### Please find links in Downloads 
+- ./data_cnndm: save the preprocessed cnndm data in this folder
+- ./data_pubmed: save the preprocessed pubmed data in this folder, the STE and classified STE in ./data_pubmed/data_pubmed_raw
+- ./data_arxiv: save the preprocessed arxiv data in this folder, the STE and classified STE in ./data_arxiv/data_arxiv_raw
+- ./histruct: unzip the github repository in this folder
+- ./models: the trained models are automaticcaly saved in this folder
 
 
 ## Training and evaluation
@@ -158,6 +159,6 @@ python histruct/run_exp_arxiv.py
 - the preprocessed arXiv data containing HiStruct information 
 - PubMed, the pre-defined dictionary of the typical section title classes and the in-class section titles, the encoded STE and classified STE (saved in [data_pubmed_raw](https://github.com/QianRuan/histruct/releases/tag/data_and_models))
 - arXiv, the pre-defined dictionary of the typical section title classes and the in-class section titles, the encoded STE and classified STE (saved in [data_arxiv_raw](https://github.com/QianRuan/histruct/releases/tag/data_and_models))
-- our best-performed HiStruct+RoBERTa model on CNN/DailyMail
-- our best-performed HiStruct+Longformer model on PubMed
-- our best-performed HiStruct+Longformer model on arXiv
+- our best-performed [HiStruct+RoBERTa model on CNN/DailyMail](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
+- our best-performed [HiStruct+Longformer model on PubMed](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
+- our best-performed [HiStruct+Longformer model on arXiv]((https://github.com/QianRuan/histruct/releases/tag/data_and_models)
