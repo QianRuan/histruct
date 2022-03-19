@@ -124,7 +124,7 @@ def get_generator(vocab_size, dec_hidden_size, device):
     generator.to(device)
 
     return generator
-
+#pytorch_transformers BERT model, used by BERTSUMEXT
 class Bert(nn.Module):
     def __init__(self, base_LM, temp_dir, finetune):
         super(Bert, self).__init__()
@@ -146,13 +146,12 @@ class Bert(nn.Module):
                 top_vec, _ = self.model(x, segs, attention_mask=mask)
                 
         return top_vec
-    
+#transformers BERT model   
 class BertT(nn.Module):
     def __init__(self, base_LM, temp_dir, finetune):
         super(BertT, self).__init__()
         if(base_LM=='bert-large'):
             self.model = BertModelT.from_pretrained('bert-large-uncased', cache_dir=temp_dir)
-            #self.model = HiStructBertModel(large, temp_dir)
         elif(base_LM=='bert-base'):
             self.model = BertModelT.from_pretrained('bert-base-uncased', cache_dir=temp_dir)
         
@@ -214,7 +213,7 @@ class Longformer(nn.Module):
 
         
         #attention_mask
-        attention_mask = mask.long()#torch.ones(x.shape, dtype=torch.long, device=x.device)# initialize to local attention (0)
+        attention_mask = mask.long()
         
 
         #global_attention_mask    
@@ -254,6 +253,7 @@ class Bart(nn.Module):
         
         self.model = BartModel.from_pretrained('facebook/'+args.base_LM, cache_dir=args.temp_dir,config=config)
         
+        #use the encoder component only
         if not args.is_encoder_decoder and args.pooled_encoder_output:
             self.model.pooler=MyPooler(config)
         
