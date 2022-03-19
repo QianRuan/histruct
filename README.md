@@ -12,14 +12,6 @@ our method gains. The ablation study demonstrates that the hierarchical position
 
 Figure 1: Architecture of the HiStruct+ model. The model consists of a base TLM for sentence encoding and two stacked inter-sentence Transformer layers for hierarchical contextual learning with a sigmoid classifier for extractive summarization. The two blocks shaded in light-green are the HiStruct injection components
 
-## ROUGE results on PubMed and arXiv
-
-
-<center class="half"><img src="https://user-images.githubusercontent.com/28861305/159102002-1cc1bbcc-bef5-45f4-a520-d7c80e2051cd.png" width="300"/><img src="https://user-images.githubusercontent.com/28861305/159101974-05dd09db-1672-4851-aa2c-aa0d782b0400.png" width="300"/></center>
-
-![image](https://user-images.githubusercontent.com/28861305/159102002-1cc1bbcc-bef5-45f4-a520-d7c80e2051cd.png)![image](https://user-images.githubusercontent.com/28861305/159101974-05dd09db-1672-4851-aa2c-aa0d782b0400.png)
-
-
 
 
 
@@ -51,8 +43,8 @@ conda install -c bioconda perl-db-file
 
 NOTE: Data preprocessing would take some time. It is recommended to use the preprocessed data if you experiment with CNN/DailyMail, PubMed or arXiv. (see links in Downloads).
 
+#CNN/DailyMail
 ```bash
-#CNN/DailyMail####################################################################################################
 #Make sure that you have the standford-corenlp toolkit downloaded
 #export CLASSPATH=stanford-corenlp-4.2.0/stanford-corenlp-4.2.0.jar
 #raw data saved in data_cnndm/data_cnndm_raw
@@ -74,10 +66,12 @@ python histruct/src/preprocess.py -dataset cnndm -mode merge_data_splits -raw_pa
 #summ_size: how many sentences should be included in ORACLE summaries, default:0, no specific limitation
 #obtain_tok_se: wehther to obatin token-level struture vectors (see Appendix A.5 in the paper), default: false 
 python histruct/src/preprocess.py -mode format_to_histruct -dataset cnndm -base_LM roberta-base -raw_path data_cnndm/data_cnndm_splitted -save_path data_cnndm/data_cnndm_roberta  -log_file data_cnndm/cnndm_prepro_fth_roberta.log -summ_size 0 -n_cpus 1 -obtain_tok_se false
+```
 
-
-#PubMed####################################################################################################
+#PubMed
+```bash
 #raw data saved in data_pubmed/data_pubmed_raw 
+
 # (1). merge data splits for training, validation and testing
 python histruct/src/preprocess.py -mode merge_data_splits -dataset pubmed -raw_path data_pubmed/data_pubmed_raw -save_path data_pubmed/data_pubmed_splitted/pubmed  -log_file data_pubmed/pubmed_prepro_merge_data_splits.log
 
@@ -101,10 +95,12 @@ python histruct/src/preprocess.py -mode encode_section_names -base_LM longformer
 # -section_names_embed_path: the path to the original STE which is generated in the step (3)
 # -section_names_cls_file: the predefined dictionary of typical section title classes and the in-class section titles
 python histruct/src/preprocess.py -mode encode_section_names_cls -base_LM longformer-base-4096 -dataset pubmed -sn_embed_comb_mode sum -raw_path data_pubmed/data_pubmed_raw -save_path data_pubmed/data_pubmed_raw -log_file data_pubmed/pubmed_prepro_esnc.log  -section_names_embed_path data_pubmed/data_pubmed_raw/section_names_embed_longformerB_sum.pt -section_names_cls_file pubmed_SN_dic_8_Added.json
+```
 
-
-#arXiv####################################################################################################
+#arXiv
+```bash
 #raw data saved in data_arxiv/data_arxiv_raw 
+
 # (1). merge data splits for training, validation and testing
 python histruct/src/preprocess.py -mode merge_data_splits -dataset arxiv -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_splitted/arxiv -log_file data_arxiv/arxiv_prepro_merge_data_splits.log
 
@@ -128,8 +124,8 @@ python histruct/src/preprocess.py -mode encode_section_names -base_LM longformer
 # -section_names_embed_path: the path to the original STE which is generated in the step (3)
 # -section_names_cls_file: the predefined dictionary of typical section title classes and the in-class section titles, saved in raw_path
 python histruct/src/preprocess.py -mode encode_section_names_cls -base_LM longformer-base-4096 -dataset arxiv -sn_embed_comb_mode sum -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_raw -log_file data_arxiv/arxiv_prepro_esnc.log  -section_names_embed_path data_arxiv/data_arxiv_raw/section_names_embed_longformerB_sum.pt -section_names_cls_file arxiv_SN_dic_10_Added.json
-
 ```
+
 ## Root directory
 - ./data_cnndm: the preprocessed cnndm data saved in this folder
 - ./data_pubmed: the preprocessed pubmed data saved in this folder, the STE and classified STE in ./data_pubmed/data_pubmed_raw
