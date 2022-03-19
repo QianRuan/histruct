@@ -158,7 +158,7 @@ python histruct/run_exp_arxiv.py
 - the [preprocessed PubMed data](https://github.com/QianRuan/histruct/releases/tag/data_and_models). containing HiStruct information 
 - the [preprocessed arXiv data](https://drive.google.com/file/d/1iJWNZz6hXtKcmlLZ_8AmOHOVnJK1Bx8A/view?usp=sharing) containing HiStruct information 
 - PubMed section title embedding, the pre-defined dictionary of the typical section title classes and the in-class section titles, the encoded STE and classified STE (saved in [data_pubmed_raw](https://github.com/QianRuan/histruct/releases/tag/data_and_models))
-- arXiv section title embedding, the pre-defined dictionary of the typical section title classes and the in-class section titles, the encoded STE and classified STE (saved in [data_arxiv_raw](https://drive.google.com/file/d/1VARWpuAuPWULzeEd6zMQfNiOmLA1VfFF/view?usp=sharing)
+- arXiv section title embedding, the pre-defined dictionary of the typical section title classes and the in-class section titles, the encoded STE and classified STE (saved in [data_arxiv_raw](https://drive.google.com/file/d/1VARWpuAuPWULzeEd6zMQfNiOmLA1VfFF/view?usp=sharing))
 - our best-performed [HiStruct+RoBERTa model on CNN/DailyMail](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
 - our best-performed [HiStruct+Longformer model on PubMed](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
 - our best-performed [HiStruct+Longformer model on arXiv](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
