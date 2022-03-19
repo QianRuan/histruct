@@ -18,7 +18,7 @@ Figure 1: Architecture of the HiStruct+ model. The model consists of a base TLM 
 |---------|--------------------------------------|--------|---------|---------|
 | PubMed  | HiStruct+ Longformer-base (15k tok.) | 46.59  | 20.39   | 42.11   |   
 | arXiv   | HiStruct+ Longformer-base (28k tok.) | 45.22  | 17.67   | 40.16   |   
-|---------|--------------------------------------|--------|---------|---------|
+
 
 
 
