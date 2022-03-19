@@ -153,9 +153,9 @@ python histruct/run_exp_arxiv.py
 ## Downloads
 - the [raw CNN/DailyMail](https://cs.nyu.edu/~kcho/DMQA/) dataset
 - the [raw PubMed & arXiv](https://github.com/armancohan/long-summarization) datasets
-- the preprocessed CNN/DailyMail data containing hierarchical structure information (roberta tokenizer used)
-- the preprocessed PubMed data containing hierarchical structure information (roberta tokenizer used)
-- the preprocessed arXiv data containing hierarchical structure information (roberta tokenizer used)
+- the [preprocessed CNN/DailyMail data](https://github.com/QianRuan/histruct/releases/tag/Data) containing HiStruct information 
+- the preprocessed PubMed data containing HiStruct information 
+- the preprocessed arXiv data containing HiStruct information 
 - the [pre-defined dictionaries](https://drive.google.com/file/d/1fSHK6r9QIPXNG58p0kzdFIWeRpFcdlqn/view?usp=sharing) of the typical section classes and the corresponding alternative section titles 
 - our best-performed HiStruct+RoBERTa model on CNN/DailyMail
 - our best-performed HiStruct+Longformer model on PubMed
