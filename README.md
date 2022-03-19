@@ -18,6 +18,13 @@ Figure 1: Architecture of the HiStruct+ model. The model consists of a base TLM 
   <img src="https://user-images.githubusercontent.com/28861305/159140087-1d1798d1-0886-4be4-af92-b06bae731115.png" width="300" /> 
 </p>
 
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/28861305/159140080-4bd29daf-d97c-4375-b7ea-95e0289c2d40.png" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/28861305/159140087-1d1798d1-0886-4be4-af92-b06bae731115.png" width=270 height=480></td>
+  </tr>
+ </table>
+
 
 ## Env. Setup
 
