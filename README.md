@@ -12,6 +12,16 @@ our method gains. The ablation study demonstrates that the hierarchical position
 
 Figure 1: Architecture of the HiStruct+ model. The model consists of a base TLM for sentence encoding and two stacked inter-sentence Transformer layers for hierarchical contextual learning with a sigmoid classifier for extractive summarization. The two blocks shaded in light-green are the HiStruct injection components
 
+## ROUGE results on PubMed and arXiv
+library(cowplot)
+library(ggplot2)
+
+p1 <- ggdraw() + draw_image("https://user-images.githubusercontent.com/28861305/159140080-4bd29daf-d97c-4375-b7ea-95e0289c2d40.png", scale = 0.9)
+p2 <- ggdraw() + draw_image("https://user-images.githubusercontent.com/28861305/159140087-1d1798d1-0886-4be4-af92-b06bae731115.png", scale = 0.9)
+
+plot_grid(p1, p2)
+
+![159074104-fdf15316-1c7d-4e7a-809b-935bd5d17965](https://user-images.githubusercontent.com/28861305/159140080-4bd29daf-d97c-4375-b7ea-95e0289c2d40.png)![159074172-eb18dcc1-95e9-4b07-a3fa-43e9572bba46](https://user-images.githubusercontent.com/28861305/159140087-1d1798d1-0886-4be4-af92-b06bae731115.png)
 
 
 
