@@ -37,11 +37,11 @@ conda install -c bioconda perl-lwp-protocol-https
 conda install -c bioconda perl-db-file
 ```
 ## Preprocessing of data
+### NOTE: Data preprocessing would take some time. It is recommended to use the preprocessed data if you experiment with CNN/DailyMail, PubMed or arXiv. (see links in Downloads and data in Release).
+
 - obtain HiStruct information 
 - obatin gold labels for extractive summarization
 - tokenize texts with the corresponding tokenizer
-
-NOTE: Data preprocessing would take some time. It is recommended to use the preprocessed data if you experiment with CNN/DailyMail, PubMed or arXiv. (see links in Downloads).
 
 #CNN/DailyMail
 ```bash
@@ -153,10 +153,12 @@ python histruct/run_exp_arxiv.py
 ## Downloads
 - the [raw CNN/DailyMail](https://cs.nyu.edu/~kcho/DMQA/) dataset
 - the [raw PubMed & arXiv](https://github.com/armancohan/long-summarization) datasets
-- the [preprocessed CNN/DailyMail data](https://github.com/QianRuan/histruct/releases/tag/Data) containing HiStruct information 
-- the preprocessed PubMed data containing HiStruct information 
+- the [preprocessed CNN/DailyMail data](https://github.com/QianRuan/histruct/releases/tag/data_and_models) containing HiStruct information 
+- the [preprocessed PubMed data](https://github.com/QianRuan/histruct/releases/tag/data_and_models). containing HiStruct information 
 - the preprocessed arXiv data containing HiStruct information 
 - the [pre-defined dictionaries](https://drive.google.com/file/d/1fSHK6r9QIPXNG58p0kzdFIWeRpFcdlqn/view?usp=sharing) of the typical section classes and the corresponding alternative section titles 
+- PubMed, encoded STE and classified STE
+- arXiv, encoded STE and classified STE
 - our best-performed HiStruct+RoBERTa model on CNN/DailyMail
 - our best-performed HiStruct+Longformer model on PubMed
 - our best-performed HiStruct+Longformer model on arXiv
