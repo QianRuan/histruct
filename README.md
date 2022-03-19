@@ -37,7 +37,7 @@ conda install -c bioconda perl-lwp-protocol-https
 conda install -c bioconda perl-db-file
 ```
 ## Preprocessing of data
-### NOTE: Data preprocessing would take some time. It is recommended to use the preprocessed data if you experiment with CNN/DailyMail, PubMed or arXiv. (see links in Downloads and data in Release).
+#### NOTE: Data preprocessing would take some time. It is recommended to use the preprocessed data if you experiment with CNN/DailyMail, PubMed or arXiv. (see links in Downloads).
 
 - obtain HiStruct information 
 - obatin gold labels for extractive summarization
@@ -127,7 +127,7 @@ python histruct/src/preprocess.py -mode encode_section_names_cls -base_LM longfo
 ```
 
 ## Root directory
-### Please find links in Downloads 
+#### Please find links in Downloads 
 - ./data_cnndm: save the preprocessed CNN/DailyMail data in this folder
 - ./data_pubmed: save the preprocessed PubMed data in this folder, the STE and classified STE in ./data_pubmed/data_pubmed_raw
 - ./data_arxiv: save the preprocessed arXiv data in this folder, the STE and classified STE in ./data_arxiv/data_arxiv_raw
