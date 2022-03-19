@@ -85,14 +85,14 @@ python histruct/src/preprocess.py -mode format_to_histruct -dataset pubmed -base
 python histruct/src/preprocess.py -mode obtain_section_names -dataset pubmed -raw_path data_pubmed/data_pubmed_raw  -save_path data_pubmed/data_pubmed_raw -log_file data_pubmed/pubmed_prepro_osn.log 
 
 # (4). generate section title embeddings (STEs)
-# -base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model
+# -base_LM: the TLM used, should be consistent with the base TLM involved in the summarization model
 # -sn_embed_comb_mode: how to convert the last hidden states at every token positions to a single vector, sum them up by default
 python histruct/src/preprocess.py -mode encode_section_names -base_LM longformer-base-4096 -dataset pubmed -sn_embed_comb_mode sum -raw_path data_pubmed/data_pubmed_raw -save_path data_pubmed/data_pubmed_raw -log_file data_pubmed/pubmed_prepro_esn.log 
 
 # (5). generate classified section title embeddings (classified STEs)
-# base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model
+# -base_LM: the TLM used, should be consistent with the base TLM involved in the summarization model
 # -sn_embed_comb_mode: how to convert the last hidden states at every token positions to a single vector, sum them up by default
-# -section_names_embed_path: the path to the original STE which is generated in the step (3)
+# -section_names_embed_path: the path to the original STE which is generated in the step (4)
 # -section_names_cls_file: the predefined dictionary of typical section title classes and the in-class section titles
 python histruct/src/preprocess.py -mode encode_section_names_cls -base_LM longformer-base-4096 -dataset pubmed -sn_embed_comb_mode sum -raw_path data_pubmed/data_pubmed_raw -save_path data_pubmed/data_pubmed_raw -log_file data_pubmed/pubmed_prepro_esnc.log  -section_names_embed_path data_pubmed/data_pubmed_raw/section_names_embed_longformerB_sum.pt -section_names_cls_file pubmed_SN_dic_8_Added.json
 ```
@@ -114,14 +114,14 @@ python histruct/src/preprocess.py -mode format_to_histruct -dataset arxiv -base_
 python histruct/src/preprocess.py -mode obtain_section_names -dataset arxiv -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_raw -log_file data_arxiv/arxiv_prepro_osn.log 
 
 # (4). generate section title embeddings (STEs)
-# -base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model
+# -base_LM: the TLM used, should be consistent with the base TLM involved in the summarization model
 # -sn_embed_comb_mode: how to convert the last hidden states at every token positions to a single vector, sum them up by default
 python histruct/src/preprocess.py -mode encode_section_names -base_LM longformer-base-4096 -dataset arxiv -sn_embed_comb_mode sum -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_raw -log_file data_arxiv/arxiv_prepro_esn.log  
 
 # (5). generate classified section title embeddings (classified STEs)
-# -base_LM: the tokenizer used, should be consistent with the base TLM involved in the summarization model
+# -base_LM: the TLM used, should be consistent with the base TLM involved in the summarization model
 # -sn_embed_comb_mode: how to convert the last hidden states at every token positions to a single vector, sum them up by default
-# -section_names_embed_path: the path to the original STE which is generated in the step (3)
+# -section_names_embed_path: the path to the original STE which is generated in the step (4)
 # -section_names_cls_file: the predefined dictionary of typical section title classes and the in-class section titles, saved in raw_path
 python histruct/src/preprocess.py -mode encode_section_names_cls -base_LM longformer-base-4096 -dataset arxiv -sn_embed_comb_mode sum -raw_path data_arxiv/data_arxiv_raw -save_path data_arxiv/data_arxiv_raw -log_file data_arxiv/arxiv_prepro_esnc.log  -section_names_embed_path data_arxiv/data_arxiv_raw/section_names_embed_longformerB_sum.pt -section_names_cls_file arxiv_SN_dic_10_Added.json
 ```
