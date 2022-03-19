@@ -128,11 +128,11 @@ python histruct/src/preprocess.py -mode encode_section_names_cls -base_LM longfo
 
 ## Root directory
 ### Please find links in Downloads 
-- ./data_cnndm: save the preprocessed cnndm data in this folder
-- ./data_pubmed: save the preprocessed pubmed data in this folder, the STE and classified STE in ./data_pubmed/data_pubmed_raw
-- ./data_arxiv: save the preprocessed arxiv data in this folder, the STE and classified STE in ./data_arxiv/data_arxiv_raw
+- ./data_cnndm: save the preprocessed CNN/DailyMail data in this folder
+- ./data_pubmed: save the preprocessed PubMed data in this folder, the STE and classified STE in ./data_pubmed/data_pubmed_raw
+- ./data_arxiv: save the preprocessed arXiv data in this folder, the STE and classified STE in ./data_arxiv/data_arxiv_raw
 - ./histruct: unzip the github repository in this folder
-- ./models: the trained models are automaticcaly saved in this folder
+- ./models: the trained models are automaticcaly saved in this folder 
 
 
 ## Training and evaluation
@@ -161,4 +161,4 @@ python histruct/run_exp_arxiv.py
 - arXiv, the pre-defined dictionary of the typical section title classes and the in-class section titles, the encoded STE and classified STE (saved in [data_arxiv_raw](https://github.com/QianRuan/histruct/releases/tag/data_and_models))
 - our best-performed [HiStruct+RoBERTa model on CNN/DailyMail](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
 - our best-performed [HiStruct+Longformer model on PubMed](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
-- our best-performed [HiStruct+Longformer model on arXiv]((https://github.com/QianRuan/histruct/releases/tag/data_and_models)
+- our best-performed [HiStruct+Longformer model on arXiv](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
