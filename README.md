@@ -172,10 +172,11 @@ python histruct/run_exp_arxiv.py
 - our best-performed [HiStruct+Longformer model on arXiv](https://github.com/QianRuan/histruct/releases/tag/data_and_models)
 
 ## Citation
-
+```bash
 @article{ruan2022histruct,
   title={HiStruct+: Improving Extractive Text Summarization with Hierarchical Structure Information},
   author={Ruan, Qian and Ostendorff, Malte and Rehm, Georg}, 
   journal={arXiv preprint arXiv:2203.09629},
   year={2022}
 }
+```
