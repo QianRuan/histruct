@@ -48,7 +48,7 @@ conda install -c bioconda perl-db-file
 #### NOTE: Data preprocessing would take some time. It is recommended to use the preprocessed data if you experiment with CNN/DailyMail, PubMed or arXiv. (see links in Downloads).
 
 - obtain HiStruct information 
-- obatin gold labels for extractive summarization
+- obatin gold labels for extractive summarization (ORACLE)
 - tokenize texts with the corresponding tokenizer
 
 #CNN/DailyMail
