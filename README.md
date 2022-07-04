@@ -173,10 +173,19 @@ python histruct/run_exp_arxiv.py
 
 ## Citation
 ```bash
-@article{ruan2022histruct,
-  title={HiStruct+: Improving Extractive Text Summarization with Hierarchical Structure Information},
-  author={Ruan, Qian and Ostendorff, Malte and Rehm, Georg}, 
-  journal={arXiv preprint arXiv:2203.09629},
-  year={2022}
+@inproceedings{ruan-etal-2022-histruct,
+    title = "{H}i{S}truct+: Improving Extractive Text Summarization with Hierarchical Structure Information",
+    author = "Ruan, Qian  and
+      Ostendorff, Malte  and
+      Rehm, Georg",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2022",
+    month = may,
+    year = "2022",
+    address = "Dublin, Ireland",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.findings-acl.102",
+    doi = "10.18653/v1/2022.findings-acl.102",
+    pages = "1292--1308",
 }
+
 ```
